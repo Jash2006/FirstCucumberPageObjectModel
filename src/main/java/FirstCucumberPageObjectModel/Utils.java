@@ -1,9 +1,7 @@
 package FirstCucumberPageObjectModel;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,7 +23,7 @@ public class Utils extends BasePage {
         File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
         //Move image file to new destination
-        File DestFile=new File("src\\test\\Screenshots"+filename+dateStamp()+".png");
+        File DestFile=new File("src\\test\\Resources\\Screenshots"+filename+dateStamp()+".png");
 
         //Copy file at destination
         try {
@@ -96,4 +94,22 @@ public class Utils extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, time);
         wait.until(ExpectedConditions.urlContains(urltext));
     }
+    //this method is to check whether the alert is present or not
+    public boolean isAlertPresent(){
+        boolean present=false;
+        try {
+            // driver checks the presence of alert
+            Alert alert=driver.switchTo().alert();
+            //if alert present then set the flag
+            present=true;
+            // if alert is present then consume the alert
+            alert.accept();
+        }
+        catch (NoAlertPresentException exc){
+            // print out alert not present
+            exc.printStackTrace();
+        }
+        return present;
+    }
+
 }

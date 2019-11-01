@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 public class RegistrationResultPage extends Utils {
     LoadProps loadProps= new LoadProps();
     public void verifyUserIsOnRegistrationSuccessPage(){
-        assertURL(props.getProperty("registrationsuccesspageurl"));
+        waitForpartOfURL(10,"registerresult");
+        assertURLText("registerresult");
+        //assertURL(props.getProperty("registrationsuccesspageurl"));
     }
 
     public void verifySuccessMessage(){

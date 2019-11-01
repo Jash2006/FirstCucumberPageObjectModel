@@ -94,4 +94,7 @@ public class HomePage extends Utils {
         // to select the Apple macbook image
         clickElement(_appleMacbookImage);
     }
+    public void userClickOnCategory(String text){
+        clickElement(By.linkText(text));
+    }
 }

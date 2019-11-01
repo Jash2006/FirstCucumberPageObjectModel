@@ -17,6 +17,7 @@ public class RegistrationPage extends Utils {
     private By _registerButton= By.name("register-button");
 
     public void verifyUserIsOnRegistrationPage(){
+        waitForpartOfURL(10,"register");
         assertURL(props.getProperty("registrationpageurl"));
     }
     public void userEnterRegistrationDetails(){

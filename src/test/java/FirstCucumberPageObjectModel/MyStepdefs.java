@@ -1,11 +1,12 @@
 package FirstCucumberPageObjectModel;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class MyStepdefs {
+public class MyStepdefs extends Utils{
     HomePage homePage= new HomePage();
     RegistrationPage registrationPage= new RegistrationPage();
     RegistrationResultPage registrationResultPage=new RegistrationResultPage();
@@ -119,5 +120,16 @@ public class MyStepdefs {
     @And("^user enters details for guest checkout$")
     public void userEntersDetailsForGuestCheckout() {
         onePageCheckOutPage.guestUserEnterDetails();
+    }
+
+    @When("^user chooses a \"([^\"]*)\"$")
+    public void userChoosesA(String category) {
+        homePage.userClickOnCategory(category);
+    }
+
+    @Then("^user should navigate to \"([^\"]*)\" successfully$")
+    public void userShouldNavigateToSuccessfully(String related_category_page) {
+        assertURL(related_category_page);
+
     }
 }

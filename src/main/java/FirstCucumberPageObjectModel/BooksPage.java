@@ -22,7 +22,7 @@ public class BooksPage extends Utils {
         }
         driver.navigate().refresh();
         waitForElementInvisible(By.xpath("//*[@class=\"content\"]"),10);
-        waitForElementVisible(_shoppingCartButton,15);
+        waitForElementVisible(_shoppingCartButton,10);
         clickElement(_shoppingCartButton);
     }
 }
